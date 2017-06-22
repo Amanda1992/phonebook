@@ -1,0 +1,15 @@
+#!  /bin/sh
+#
+# Amanda Anderson
+# June 6, 2017
+#amanda.anderson@codeimmersives.com
+#
+
+PATH=/bin:/usr/bin:/usr/local/bin:sbin
+export PATH
+
+INFILE=$HOME/.phone
+QUERY=$@
+RESULTS=`grep "$QUERY" $INFILE`
+echo $RESULTS
+
