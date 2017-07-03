@@ -1,0 +1,46 @@
+#!  /bin/sh
+#
+# Amanda Anderson
+# June 6, 2017
+#amanda.anderson@codeimmersives.com
+#
+
+PATH=/bin:/usr/bin:/usr/local/bin:sbin
+export PATH
+
+NAME="$1"
+ADDR="$2"
+NUM="$3"
+LOOP=0
+MAXLOOP=1
+
+while [ $LOOP -lt $MAXLOOP ]
+do
+
+ SNAME=`echo $NAME | tr -d [:cntrl:] | tr -d [:digit:] | tr -d [:special:]`    
+ SADDR=`echo $ADDR | tr -d [:special:] | tr -d [:cntrl:]`
+ SNUM=`echo $NUM | tr -d [:alpha:] | tr -d [:cntrl:] | tr -d [:special:]`
+
+  if [ $NAME=$SNAME ] 
+  then
+  break 
+   echo "Invalid input!! try your name again"
+  fi
+ 
+  if [ $ADDR = $SADDR ]
+  then 
+  break
+   echo "Invalid input!! please enter address"
+   exit 2
+  fi
+ 
+  if [ $NUM = $SNUM ]
+  then
+  break
+   echo "Invalid input!! thats not a phone number"
+  exit 3 
+  fi
+ 
+done
+echo "NAME: $NAME : ADDRESS: $ADDR : NUMBER: $NUM" >> $HOME/.phone 
+
